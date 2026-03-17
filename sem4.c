@@ -74,6 +74,7 @@ void adaugaMasinaInLista(struct Nod** lista, Masina masinaNoua) {
 	curent->next = nou;
 }
 
+
 void afisareListaMasini(struct Nod* lista) {
 	if (lista == NULL)
 		return;
@@ -85,8 +86,12 @@ void afisareListaMasini(struct Nod* lista) {
 	}
 }
 
-void adaugaLaInceputInLista(/*lista de masini*/ Masina masinaNoua) {
-	//adauga la inceputul listei o noua masina pe care o primim ca parametru
+void adaugaLaInceputInLista(struct Nod** lista, Masina masinaNoua) {
+	struct Nod* nou = malloc(sizeof(struct Nod));
+	nou->masina = masinaNoua; // shallow copy
+	nou->next = *lista;       
+
+	*lista = nou;             
 }
 
 void* citireListaMasiniDinFisier(const char* numeFisier) { //void* este pointer la orice, putem lasa asa sau sa modificam in Nod*
